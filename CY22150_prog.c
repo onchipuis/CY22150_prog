@@ -2,6 +2,7 @@
  */
  
 // compile using: gcc CY22150_prog.c -I./ -o CY22150_prog -lftd2xx -lMPSSE
+// compile using: gcc CY22150_prog.c -I./ -o CY22150_prog.exe -L./ -lftd2xx -lMPSSE
 
 /******************************************************************************/
 /* 							 Include files										   */
@@ -10,11 +11,11 @@
 #include<stdio.h>
 #include<stdlib.h>
 /* OS specific libraries */
-#ifdef _WIN32
+/*#ifdef _WIN32
 #include<windows.h>
 #endif
 
-#include "WinTypes.h"
+#include "WinTypes.h"*/
 
 /* Include D2XX header*/
 #include "ftd2xx.h"
