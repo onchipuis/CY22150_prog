@@ -24,7 +24,7 @@
 #include "libMPSSE_i2c.h"
 
 /******************************************************************************/
-/*								Macro and type defines							   */
+/*								Macro and type definitions							   */
 /******************************************************************************/
 /* Helper macros */
 
@@ -34,7 +34,7 @@
 encountered \n",__FILE__, __LINE__, __FUNCTION__);exit(1);}else{;}};
 
 /* Clock EEPROM parameters*/
-#define REF				30000	// Reference clock In KHz
+#define REF				30000	// Reference clock In kHz
 #define IS_ESR_30		1		// Crystal ESR is 30ohm?
 #define XCL				12		// Crystal Load Capacitance (in pF)
 #define IS_EXTERNAL		0		// 1/0 External Clock?
@@ -81,7 +81,7 @@ uint8	PUMP =			0;		// 3-bit Charge Pump
 #define Q_TOTAL						(Q+2)
 #define P_TOTAL						((2*(PB+4)) + PO)
 
-/* Application specific macro definations */
+/* Application specific macro definitions */
 #define I2C_DEVICE_ADDRESS_EEPROM		0x69	// For Clock EEPROM
 #define I2C_DEVICE_BUFFER_SIZE			256
 #define I2C_WRITE_COMPLETION_RETRY		10
@@ -114,7 +114,7 @@ uint8 XDRV_det(uint8 bIsExternal, float fFreq, uint8 CEL, uint8 bIsESR30)
 		else if(25.0f <= fFreq && fFreq < 50.0f) return 1;
 		else if(50.0f <= fFreq && fFreq < 90.0f) return 2;
 		else if(90.0f <= fFreq && fFreq < 133.0f) return 3;
-		else fprintf(stderr, "WARN: There is a unknown frequency when is external ref (%g MHz).\n", fFreq);
+		else fprintf(stderr, "WARN: There is a unknown frequency when it is external ref (%g MHz).\n", fFreq);
 	}
 	else
 	{
@@ -123,21 +123,21 @@ uint8 XDRV_det(uint8 bIsExternal, float fFreq, uint8 CEL, uint8 bIsESR30)
 			if(0x00 <= CEL && CEL < 0x80) return (bIsESR30 ? 0 : 1);
 			else if(0x80 <= CEL && CEL < 0xC0) return (bIsESR30 ? 1 : 2);
 			else if(0xC0 <= CEL) return (bIsESR30 ? 1 : 2);
-			else fprintf(stderr, "WARN: There is a unknown CapLoad (%u pF) when is crystal (%g MHz).\n", CEL, fFreq);
+			else fprintf(stderr, "WARN: There is a unknown CapLoad (%u pF) when it is crystal (%g MHz).\n", CEL, fFreq);
 		}
 		else if(15.0f <= fFreq && fFreq < 20.0f) 
 		{
 			if(0x00 <= CEL && CEL < 0x80) return (bIsESR30 ? 1 : 2);
 			else if(0x80 <= CEL && CEL < 0xC0) return (bIsESR30 ? 1 : 2);
 			else if(0xC0 <= CEL) return (bIsESR30 ? 2 : 2);
-			else fprintf(stderr, "WARN: There is a unknown CapLoad (%u pF) when is crystal (%g MHz).\n", CEL, fFreq);
+			else fprintf(stderr, "WARN: There is a unknown CapLoad (%u pF) when it is crystal (%g MHz).\n", CEL, fFreq);
 		}
 		else if(20.0f <= fFreq && fFreq < 25.0f) 
 		{
 			if(0x00 <= CEL && CEL < 0x80) return (bIsESR30 ? 1 : 2);
 			else if(0x80 <= CEL && CEL < 0xC0) return (bIsESR30 ? 2 : 2);
 			else if(0xC0 <= CEL) return (bIsESR30 ? 2 : 3);
-			else fprintf(stderr, "WARN: There is a unknown CapLoad (%u pF) when is crystal (%g MHz).\n", CEL, fFreq);
+			else fprintf(stderr, "WARN: There is a unknown CapLoad (%u pF) when it is crystal (%g MHz).\n", CEL, fFreq);
 		}
 		else if(25.0f <= fFreq && fFreq <= 30.0f) 
 		{
@@ -146,11 +146,11 @@ uint8 XDRV_det(uint8 bIsExternal, float fFreq, uint8 CEL, uint8 bIsESR30)
 			else if(0xC0 <= CEL) 
 			{	
 				if(bIsESR30) return 3;
-				else fprintf(stderr, "WARN: N/A in table (%u pF) when is crystal (%g MHz) choosing 60ohm ESR.\n", CEL, fFreq);
+				else fprintf(stderr, "WARN: N/A in table (%u pF) when it is crystal (%g MHz) choosing 60ohm ESR.\n", CEL, fFreq);
 			}
-			else fprintf(stderr, "WARN: There is a unknown CapLoad (%u pF) when is crystal (%g MHz).\n", CEL, fFreq);
+			else fprintf(stderr, "WARN: There is a unknown CapLoad (%u pF) when it is crystal (%g MHz).\n", CEL, fFreq);
 		}
-		else fprintf(stderr, "WARN: There is a unknown frequency when is crystal (%g MHz).\n", fFreq);
+		else fprintf(stderr, "WARN: There is a unknown frequency when it is crystal (%g MHz).\n", fFreq);
 	}
 	return 0;
 }
