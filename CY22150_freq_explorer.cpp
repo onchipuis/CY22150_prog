@@ -1,5 +1,5 @@
 // compile using: g++ CY22150_freq_explorer.cpp CY22150_lib.c -I./ -o CY22150_freq_explorer
-// compile using: g++ CY22150_freq_explorer.cpp CY22150_lib.c -I./ -o CY22150_freq_explorer.exe
+// compile using: g++ -D_WIN32 CY22150_freq_explorer.cpp CY22150_lib.c -I./ -o CY22150_freq_explorer.exe
 
 #include "CY22150_lib.h"
 #include <cstdio>
@@ -178,7 +178,11 @@ int main(int argc, char** argv) {
     }
     printf("Invoking...\n");
     char cmd[256];
+#ifdef _WIN32
+    sprintf(cmd, "./CY22150_prog.exe %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %g", 
+#else
     sprintf(cmd, "./CY22150_prog %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %g", 
+#endif
         PB,
         PO,
         Q,
